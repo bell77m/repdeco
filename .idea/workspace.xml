@@ -68,6 +68,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bell_\PycharmProjects\Repdeco\tests" />
       <recent name="C:\Users\bell_\PycharmProjects\Repdeco" />
       <recent name="C:\Users\bell_\PycharmProjects\Repdeco\src" />
       <recent name="C:\Users\bell_\PycharmProjects\Repdeco\src\repdeco" />
@@ -272,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774535650522</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update">
+      <option name="closed" value="true" />
+      <created>1774536038676</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1774536038676</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
