@@ -31,7 +31,7 @@ jobs:
           pip install -e .
 
       - name: Run tests
-        # เปลี่ยนคำสั่งให้ค้นหาไฟล์เทสทั้งหมดในโฟลเดอร์ tests อัตโนมัติ
+
         run: |
           python -m unittest discover -s tests
 
