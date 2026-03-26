@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: repdeco
+Version: 0.1.0
+Summary: Retry, Cache, Circuit Breaker decorator for Python (sync + async)
+Author-email: bell77m <bell77m@gmail.com>
+Keywords: retry,cache,circuit-breaker,decorator,async
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# repdeco
+
+Retry + Cache + Circuit Breaker decorator (sync + async)
+
+## Install
+```bash
+pip install repdeco
