@@ -6,6 +6,7 @@ import threading
 import inspect
 import json
 import concurrent.futures
+
 from .utils import must_retry
 
 logger = logging.getLogger("repdeco")
@@ -153,7 +154,6 @@ class Repdeco:
                             raise
 
                         if attempt < retry:
-                            # <-- Fixed to default to 0 sleep if backoff is 0
                             sleep = backoff * (2 ** attempt) if backoff else 0
                             if sleep > 0:
                                 await asyncio.sleep(sleep)
@@ -204,7 +204,6 @@ class Repdeco:
                             raise
 
                         if attempt < retry:
-                            # <-- Fixed to default to 0 sleep if backoff is 0
                             sleep = backoff * (2 ** attempt) if backoff else 0
                             if sleep > 0:
                                 time.sleep(sleep)
@@ -215,7 +214,9 @@ class Repdeco:
 
         return decorator
 
+
 _default = Repdeco()
+
 
 def repdeco(*args, **kwargs):
     return _default.repdeco(*args, **kwargs)
