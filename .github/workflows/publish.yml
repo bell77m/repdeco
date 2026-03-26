@@ -6,8 +6,17 @@ on:
       - "v*.*.*"
 
 jobs:
-  build:
+  build-and-publish:
+    name: Build and publish to PyPI
     runs-on: ubuntu-latest
+
+    # This environment matches the PyPI setup step below
+    environment: release
+
+    # IMPORTANT: These permissions are required for OIDC Trusted Publishing
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout code
@@ -21,13 +30,11 @@ jobs:
       - name: Install build tools
         run: |
           python -m pip install --upgrade pip
-          pip install build twine
+          pip install build
 
       - name: Build package
         run: python -m build
 
-      - name: Publish to PyPI
-        run: twine upload dist/*
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # No password or username needed here!
