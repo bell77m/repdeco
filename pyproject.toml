@@ -22,6 +22,4 @@ classifiers = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.setuptools.packages.find]
 exclude = ["test.py", "tests*"]
