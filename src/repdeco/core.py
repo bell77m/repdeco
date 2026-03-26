@@ -5,7 +5,7 @@ import logging
 import threading
 import inspect
 import json
-
+import concurrent.futures
 from .utils import must_retry
 
 logger = logging.getLogger("repdeco")
@@ -112,6 +112,7 @@ class Repdeco:
                 if self.enable_logging:
                     logger.info(msg)
 
+            @functools.wraps(func)
             async def run_async(*args, **kwargs):
                 name = func.__name__
                 key = make_key(func, args, kwargs)
@@ -152,11 +153,14 @@ class Repdeco:
                             raise
 
                         if attempt < retry:
-                            sleep = backoff * (2 ** attempt) if backoff else 1
-                            await asyncio.sleep(sleep)
+                            # <-- Fixed to default to 0 sleep if backoff is 0
+                            sleep = backoff * (2 ** attempt) if backoff else 0
+                            if sleep > 0:
+                                await asyncio.sleep(sleep)
 
                 raise last_error
 
+            @functools.wraps(func)
             def run_sync(*args, **kwargs):
                 name = func.__name__
                 key = make_key(func, args, kwargs)
@@ -176,11 +180,9 @@ class Repdeco:
                         log(f"[call] {name} attempt={attempt+1}")
 
                         if timeout:
-                            loop = asyncio.new_event_loop()
-                            result = loop.run_until_complete(
-                                asyncio.wait_for(func(*args, **kwargs), timeout)
-                            )
-                            loop.close()
+                            with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+                                future = executor.submit(func, *args, **kwargs)
+                                result = future.result(timeout=timeout)
                         else:
                             result = func(*args, **kwargs)
 
@@ -195,12 +197,17 @@ class Repdeco:
                         last_error = e
                         cb.fail_call(name)
 
+                        if isinstance(e, concurrent.futures.TimeoutError):
+                            log(f"[timeout] {name} exceeded {timeout}s")
+
                         if not must_retry(e, retry_on):
                             raise
 
                         if attempt < retry:
-                            sleep = backoff * (2 ** attempt) if backoff else 1
-                            time.sleep(sleep)
+                            # <-- Fixed to default to 0 sleep if backoff is 0
+                            sleep = backoff * (2 ** attempt) if backoff else 0
+                            if sleep > 0:
+                                time.sleep(sleep)
 
                 raise last_error
 
@@ -208,9 +215,7 @@ class Repdeco:
 
         return decorator
 
-
 _default = Repdeco()
-
 
 def repdeco(*args, **kwargs):
     return _default.repdeco(*args, **kwargs)
