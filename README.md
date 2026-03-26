@@ -1,6 +1,5 @@
 # 🛡️ Repdeco
 
-[![PyPI version](https://img.shields.io/pypi/v/repdeco.svg)](https://pypi.org/project/repdeco/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python versions](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Platform](https://img.shields.io/badge/platform-OS%20Independent-lightgrey.svg)](https://github.com/yourusername/repdeco)

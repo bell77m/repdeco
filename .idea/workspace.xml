@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d17ba63c-2879-499f-8fb3-e86a10ba45a4" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repdeco.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/src/repdeco.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repdeco.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/repdeco.egg-info/SOURCES.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -301,7 +300,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774536936211</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="update">
+      <option name="closed" value="true" />
+      <created>1774538949847</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1774538949847</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
