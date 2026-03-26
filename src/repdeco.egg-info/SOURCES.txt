@@ -1,3 +1,4 @@
+LICENSE
 README.md
 pyproject.toml
 src/repdeco/__init__.py
@@ -7,3 +8,4 @@ src/repdeco.egg-info/PKG-INFO
 src/repdeco.egg-info/SOURCES.txt
 src/repdeco.egg-info/dependency_links.txt
 src/repdeco.egg-info/top_level.txt
+tests/tests.py

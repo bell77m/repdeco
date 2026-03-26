@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d17ba63c-2879-499f-8fb3-e86a10ba45a4" name="Changes" comment="update" />
+    <list default="true" id="d17ba63c-2879-499f-8fb3-e86a10ba45a4" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repdeco.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/src/repdeco.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repdeco.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/repdeco.egg-info/SOURCES.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,18 +25,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "bell77m"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;bell77m&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/bell77m/repdeco.git",
-    "accountId": "038f0b1f-4d95-4c4a-a4af-2462f7605796"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/bell77m/repdeco.git&quot;,
+    &quot;accountId&quot;: &quot;038f0b1f-4d95-4c4a-a4af-2462f7605796&quot;
   }
-}]]></component>
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -52,6 +56,7 @@
     &quot;Python tests.Python tests for test.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Python tests in test.py.executor&quot;: &quot;Run&quot;,
     &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tests.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
@@ -68,8 +73,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bell_\PycharmProjects\Repdeco\tests" />
       <recent name="C:\Users\bell_\PycharmProjects\Repdeco" />
+      <recent name="C:\Users\bell_\PycharmProjects\Repdeco\tests" />
       <recent name="C:\Users\bell_\PycharmProjects\Repdeco\src" />
       <recent name="C:\Users\bell_\PycharmProjects\Repdeco\src\repdeco" />
     </key>
@@ -89,7 +94,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\bell_\PycharmProjects\Repdeco\tests\tests.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\bell_\PycharmProjects\Repdeco\tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -98,7 +103,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for tests.tests" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Repdeco" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,14 +115,13 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;tests.tests&quot;" />
+      <option name="_new_target" value="&quot;tests&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.tests" />
-        <item itemvalue="Python tests.Python tests for tests.tests" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774536646504</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update">
+      <option name="closed" value="true" />
+      <created>1774536936211</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1774536936211</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -85,6 +85,8 @@ class CircuitBreaker:
                 self.half_open = False
                 logger.error(f"[Circuit OPEN] {name}")
 
+# สร้างตัวแปรเช็คว่ามีการตั้งค่า fallback มาหรือไม่
+_NO_FALLBACK = object()
 
 class Repdeco:
     def __init__(
@@ -104,6 +106,7 @@ class Repdeco:
         cache_ttl=0,
         cb_threshold=5,
         cb_timeout=10,
+        fallback=_NO_FALLBACK, # <--- เพิ่ม fallback ตรงนี้
     ):
         def decorator(func):
             is_async = inspect.iscoroutinefunction(func)
@@ -118,15 +121,19 @@ class Repdeco:
                 name = func.__name__
                 key = make_key(func, args, kwargs)
 
-                cb.check(name)
+                try:
+                    cb.check(name)
+                except Exception as e:
+                    if fallback is not _NO_FALLBACK:
+                        log(f"[fallback] {name} triggered due to: Circuit Breaker Open")
+                        return fallback() if callable(fallback) else fallback
+                    raise
 
                 if cache_ttl:
                     cached = self.cache.get(key)
                     if cached is not None:
                         log(f"[cache hit] {name}")
                         return cached
-
-                last_error = None
 
                 for attempt in range(retry + 1):
                     try:
@@ -147,33 +154,39 @@ class Repdeco:
                         return result
 
                     except Exception as e:
-                        last_error = e
                         cb.fail_call(name)
 
-                        if not must_retry(e, retry_on):
+                        is_last_attempt = (attempt == retry)
+                        should_retry = must_retry(e, retry_on)
+
+                        if is_last_attempt or not should_retry:
+                            if fallback is not _NO_FALLBACK:
+                                log(f"[fallback] {name} triggered due to: {type(e).__name__}")
+                                return fallback() if callable(fallback) else fallback
                             raise
 
-                        if attempt < retry:
-                            sleep = backoff * (2 ** attempt) if backoff else 0
-                            if sleep > 0:
-                                await asyncio.sleep(sleep)
-
-                raise last_error
+                        sleep = backoff * (2 ** attempt) if backoff else 0
+                        if sleep > 0:
+                            await asyncio.sleep(sleep)
 
             @functools.wraps(func)
             def run_sync(*args, **kwargs):
                 name = func.__name__
                 key = make_key(func, args, kwargs)
 
-                cb.check(name)
+                try:
+                    cb.check(name)
+                except Exception as e:
+                    if fallback is not _NO_FALLBACK:
+                        log(f"[fallback] {name} triggered due to: Circuit Breaker Open")
+                        return fallback() if callable(fallback) else fallback
+                    raise
 
                 if cache_ttl:
                     cached = self.cache.get(key)
                     if cached is not None:
                         log(f"[cache hit] {name}")
                         return cached
-
-                last_error = None
 
                 for attempt in range(retry + 1):
                     try:
@@ -194,21 +207,23 @@ class Repdeco:
                         return result
 
                     except Exception as e:
-                        last_error = e
                         cb.fail_call(name)
 
                         if isinstance(e, concurrent.futures.TimeoutError):
                             log(f"[timeout] {name} exceeded {timeout}s")
 
-                        if not must_retry(e, retry_on):
+                        is_last_attempt = (attempt == retry)
+                        should_retry = must_retry(e, retry_on)
+
+                        if is_last_attempt or not should_retry:
+                            if fallback is not _NO_FALLBACK:
+                                log(f"[fallback] {name} triggered due to: {type(e).__name__}")
+                                return fallback() if callable(fallback) else fallback
                             raise
 
-                        if attempt < retry:
-                            sleep = backoff * (2 ** attempt) if backoff else 0
-                            if sleep > 0:
-                                time.sleep(sleep)
-
-                raise last_error
+                        sleep = backoff * (2 ** attempt) if backoff else 0
+                        if sleep > 0:
+                            time.sleep(sleep)
 
             return run_async if is_async else run_sync
 
