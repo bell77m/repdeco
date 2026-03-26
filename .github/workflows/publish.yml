@@ -10,10 +10,8 @@ jobs:
     name: Build and publish to PyPI
     runs-on: ubuntu-latest
 
-    # This environment matches the PyPI setup step below
     environment: release
 
-    # IMPORTANT: These permissions are required for OIDC Trusted Publishing
     permissions:
       id-token: write
       contents: read
@@ -37,4 +35,3 @@ jobs:
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        # No password or username needed here!
