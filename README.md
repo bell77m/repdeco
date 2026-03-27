@@ -8,7 +8,6 @@
 
 It provides a unified, elegant interface for **Retries**, **Exponential Backoff**, **Timeouts**, **Circuit Breaking**, and **Memory Caching** — seamlessly supporting both `sync` and `async` functions.
 
----
 
 ## 🚀 Features
 
@@ -19,7 +18,7 @@ It provides a unified, elegant interface for **Retries**, **Exponential Backoff*
 - **⚡ Sync & Async Ready** — Use the exact same `@repdeco` decorator for standard `def` and `async def`.
 - **📝 Metadata Preserved** — Keeps your original function names and docstrings intact (`@functools.wraps` support).
 
----
+
 
 ## 📦 Installation
 
@@ -27,7 +26,7 @@ It provides a unified, elegant interface for **Retries**, **Exponential Backoff*
 pip install repdeco
 ```
 
----
+
 
 ## 💡 Quick Start & Usage
 
@@ -39,7 +38,7 @@ import asyncio
 from repdeco.core import repdeco
 ```
 
----
+
 
 ### 1. Retries with Exponential Backoff
 
@@ -54,7 +53,6 @@ def fetch_data():
 # Will try 4 times total (1 initial + 3 retries) before raising the error.
 ```
 
----
 
 ### 2. Timeouts (Sync & Async)
 
@@ -72,7 +70,6 @@ async def slow_async_task():
     return "Done"
 ```
 
----
 
 ### 3. Circuit Breaker
 
@@ -91,7 +88,6 @@ def fragile_api_call():
 CLOSED (normal) → [N failures] → OPEN (blocked) → [timeout expires] → HALF-OPEN → [success] → CLOSED
 ```
 
----
 
 ### 4. Caching with TTL (Time-To-Live)
 
@@ -108,7 +104,6 @@ print(heavy_computation(5, 5))  # Takes 3 seconds → returns 25
 print(heavy_computation(5, 5))  # Instant! (Returns cached 25)
 ```
 
----
 
 ### 5. The "All-in-One" Combo
 
@@ -132,7 +127,6 @@ async def resilient_web_scraper(url):
     pass
 ```
 
----
 
 ## ⚙️ Configuration Parameters
 
@@ -146,7 +140,6 @@ async def resilient_web_scraper(url):
 | `cb_threshold` | `int`          | `5`     | Number of consecutive failures before the Circuit Breaker opens.                                     |
 | `cb_timeout`   | `int`/`float`  | `10`    | Seconds the Circuit Breaker remains open before attempting a half-open retry.                        |
 
----
 
 ## 📜 License
 
